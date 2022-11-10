@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import React,{ useState } from 'react';
+import usePow  from './util/usePow';
+import { useDidUpdate } from './util/useDidUpdate';
 function App() {
+  const [flag, setFlag] = useState<boolean>(true)
+  const [arr,setArr] = useState<number[]>([1, 2, 3])
+  debugger
+  const data = usePow(arr)
+  const changeArr = ():void=> {
+    let a = JSON.parse(JSON.stringify(arr))
+    a.push(2)
+    console.log(a)
+    setArr(a)
+  }
+  // useDidUpdate(changeArr)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>数字：{JSON.stringify(data)}</div>
+      <button color='primary' onClick={() => {setFlag(v => !v)}}>切换</button>
+      <button color='primary' onClick={() => {changeArr()}}>改变数组</button>
+       <div>切换状态：{JSON.stringify(flag)}</div>
     </div>
   );
 }

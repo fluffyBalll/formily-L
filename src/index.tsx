@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'antd/dist/antd.css';
+// import './bolg.less'
 import Router from './router';
 import reportWebVitals from './reportWebVitals';
+import { Route, Routes, useNavigate, BrowserRouter ,useRoutes} from 'react-router-dom'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router />
+   <BrowserRouter>
+     <Router />
+   </BrowserRouter>  
   </React.StrictMode>,
   document.getElementById('root')
 );
